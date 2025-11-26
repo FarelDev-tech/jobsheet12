@@ -25,7 +25,7 @@ public class Kafe082 {
 
     public static void main(String[] args) {
         menu("Andi", true, "DISKON50%");
-        menu("Budi", false, "DISKON30%");
-        menu("Citra", true, "DISKON10%"); // Kode promo invalid
+        menu("Budi", true, "DISKON30%"); // Kode promo valid dan member
+        menu("Citra", false, "DISKON10%"); // Kode promo invalid
     }
 }
