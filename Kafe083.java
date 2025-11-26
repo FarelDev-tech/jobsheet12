@@ -42,24 +42,32 @@ public class Kafe083 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int pilihanMenu, banyakItem, totalHarga;
+        int pilihanMenu, banyakItem, totalHarga, totalKeseluruhan = 0, subtotal;
+        String pesanLagi;
 
         menu("Andi", true, "DISKON50%");
         menu("Budi", true, "DISKON30%"); // Kode promo valid dan member
         menu("Citra", false, "DISKON10%"); // Kode promo invalid
 
-        System.out.println("\n=== Contoh Perhitungan Total Harga ===");
-        System.out.print("Masukkan pilihan menu (1-4): ");
-        pilihanMenu = sc.nextInt();
-        System.out.print("Masukkan jumlah yang ingin dipesan: ");
-        banyakItem = sc.nextInt();
+        do {
+            System.out.print("Masukkan pilihan menu (1-4): ");
+            pilihanMenu = sc.nextInt();
+            System.out.print("Masukkan jumlah yang ingin dipesan: ");
+            banyakItem = sc.nextInt();
 
-        sc.nextLine(); // buffering
-        System.out.print("Masukkan kode promo (jika ada): ");
-        String kodePromo = sc.nextLine();
+            sc.nextLine(); // buffering
+            System.out.print("Masukkan kode promo (jika ada): ");
+            String kodePromo = sc.nextLine();
 
-        totalHarga = hitungTotalHarga083(pilihanMenu, banyakItem, kodePromo);
+            subtotal = hitungTotalHarga083(pilihanMenu, banyakItem, kodePromo);
+            totalKeseluruhan += subtotal;
 
-        System.out.println("Total harga yang harus dibayar: Rp " + totalHarga);
+            System.out.println("Subtotal untuk pesanan ini: Rp " + subtotal);
+            System.out.print("Apakah Anda ingin memesan lagi? (y/n): ");
+
+            pesanLagi = sc.next();
+        } while (pesanLagi.equalsIgnoreCase("y"));
+
+        System.out.println("Total keseluruhan yang harus dibayar: Rp " + totalKeseluruhan);
     }
 }
